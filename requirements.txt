@@ -1,3 +1,12 @@
 asgiref==3.9.1
 Django==5.2.5
 sqlparse==0.5.3
+django-debug-toolbar==6.0.0
+django-filter==25.1
+djangorestframework==3.16.0
+djangorestframework_simplejwt==5.5.1
+djoser==2.3.3
+drf-nested-routers==0.94.2
+drf-yasg==1.21.10
+django-filter==25.1
+python-decouple==3.8
