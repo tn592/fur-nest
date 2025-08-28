@@ -1,0 +1,310 @@
+[
+  {
+    "model": "pet.category",
+    "pk": 1,
+    "fields": {
+      "name": "Dogs",
+      "description": "Friendly and loyal companions"
+    }
+  },
+  {
+    "model": "pet.category",
+    "pk": 2,
+    "fields": {
+      "name": "Cats",
+      "description": "Independent and playful friends"
+    }
+  },
+  {
+    "model": "pet.category",
+    "pk": 3,
+    "fields": {
+      "name": "Birds",
+      "description": "Colorful and cheerful pets"
+    }
+  },
+  {
+    "model": "pet.category",
+    "pk": 4,
+    "fields": {
+      "name": "Rabbits",
+      "description": "Gentle and quiet pets, great for families"
+    }
+  },
+  {
+    "model": "pet.category",
+    "pk": 5,
+    "fields": {
+      "name": "Fish",
+      "description": "Peaceful and calming pets to watch"
+    }
+  },
+  {
+    "model": "pet.category",
+    "pk": 6,
+    "fields": {
+      "name": "Hamsters",
+      "description": "Small and playful pocket pets"
+    }
+  },
+  {
+    "model": "pet.pet",
+    "pk": 1,
+    "fields": {
+      "name": "Buddy",
+      "category": 1,
+      "breed": "Golden Retriever",
+      "age": 3,
+      "description": "A playful and loving golden retriever.",
+      "availability": true,
+      "price": "500.00"
+    }
+  },
+  {
+    "model": "pet.pet",
+    "pk": 2,
+    "fields": {
+      "name": "Max",
+      "category": 1,
+      "breed": "German Shepherd",
+      "age": 4,
+      "description": "Loyal guard dog, highly intelligent and protective.",
+      "availability": true,
+      "price": "700.00"
+    }
+  },
+  {
+    "model": "pet.pet",
+    "pk": 3,
+    "fields": {
+      "name": "Bella",
+      "category": 1,
+      "breed": "Beagle",
+      "age": 2,
+      "description": "Energetic dog that loves to explore.",
+      "availability": true,
+      "price": "400.00"
+    }
+  },
+  {
+    "model": "pet.pet",
+    "pk": 4,
+    "fields": {
+      "name": "Rocky",
+      "category": 1,
+      "breed": "Bulldog",
+      "age": 5,
+      "description": "Calm and gentle bulldog, great with kids.",
+      "availability": false,
+      "price": "350.00"
+    }
+  },
+  {
+    "model": "pet.pet",
+    "pk": 5,
+    "fields": {
+      "name": "Misty",
+      "category": 2,
+      "breed": "Persian Cat",
+      "age": 2,
+      "description": "Calm and affectionate cat, perfect for indoors.",
+      "availability": true,
+      "price": "0.00"
+    }
+  },
+  {
+    "model": "pet.pet",
+    "pk": 6,
+    "fields": {
+      "name": "Luna",
+      "category": 2,
+      "breed": "Siamese Cat",
+      "age": 1,
+      "description": "Curious and vocal cat, loves attention.",
+      "availability": true,
+      "price": "0.00"
+    }
+  },
+  {
+    "model": "pet.pet",
+    "pk": 7,
+    "fields": {
+      "name": "Shadow",
+      "category": 2,
+      "breed": "Maine Coon",
+      "age": 3,
+      "description": "Large cat with a gentle personality.",
+      "availability": true,
+      "price": "0.00"
+    }
+  },
+  {
+    "model": "pet.pet",
+    "pk": 8,
+    "fields": {
+      "name": "Neko",
+      "category": 2,
+      "breed": "Bengal",
+      "age": 2,
+      "description": "Active and playful cat with leopard-like spots.",
+      "availability": false,
+      "price": "0.00"
+    }
+  },
+  {
+    "model": "pet.pet",
+    "pk": 9,
+    "fields": {
+      "name": "Chirpy",
+      "category": 3,
+      "breed": "Parakeet",
+      "age": 1,
+      "description": "A bright green parakeet that loves to sing.",
+      "availability": false,
+      "price": "50.00"
+    }
+  },
+  {
+    "model": "pet.pet",
+    "pk": 10,
+    "fields": {
+      "name": "Coco",
+      "category": 3,
+      "breed": "Cockatiel",
+      "age": 2,
+      "description": "Friendly bird that enjoys whistling and mimicking sounds.",
+      "availability": true,
+      "price": "120.00"
+    }
+  },
+  {
+    "model": "pet.pet",
+    "pk": 11,
+    "fields": {
+      "name": "Sunny",
+      "category": 3,
+      "breed": "Canary",
+      "age": 1,
+      "description": "A cheerful canary with a beautiful singing voice.",
+      "availability": true,
+      "price": "80.00"
+    }
+  },
+  {
+    "model": "pet.pet",
+    "pk": 12,
+    "fields": {
+      "name": "Blue",
+      "category": 3,
+      "breed": "Macaw",
+      "age": 4,
+      "description": "A large parrot with vibrant feathers.",
+      "availability": false,
+      "price": "500.00"
+    }
+  },
+  {
+    "model": "pet.pet",
+    "pk": 13,
+    "fields": {
+      "name": "Snowball",
+      "category": 4,
+      "breed": "Netherland Dwarf",
+      "age": 2,
+      "description": "Small, fluffy rabbit with a gentle nature.",
+      "availability": true,
+      "price": "80.00"
+    }
+  },
+  {
+    "model": "pet.pet",
+    "pk": 14,
+    "fields": {
+      "name": "Thumper",
+      "category": 4,
+      "breed": "Holland Lop",
+      "age": 1,
+      "description": "Adorable rabbit with floppy ears.",
+      "availability": true,
+      "price": "90.00"
+    }
+  },
+  {
+    "model": "pet.pet",
+    "pk": 15,
+    "fields": {
+      "name": "Cinnamon",
+      "category": 4,
+      "breed": "Mini Rex",
+      "age": 3,
+      "description": "Soft fur and very affectionate.",
+      "availability": false,
+      "price": "70.00"
+    }
+  },
+  {
+    "model": "pet.pet",
+    "pk": 16,
+    "fields": {
+      "name": "Bubbles",
+      "category": 5,
+      "breed": "Goldfish",
+      "age": 1,
+      "description": "Easy to care for and relaxing to watch.",
+      "availability": true,
+      "price": "10.00"
+    }
+  },
+  {
+    "model": "pet.pet",
+    "pk": 17,
+    "fields": {
+      "name": "Splash",
+      "category": 5,
+      "breed": "Betta",
+      "age": 1,
+      "description": "Colorful fish with flowing fins.",
+      "availability": true,
+      "price": "15.00"
+    }
+  },
+  {
+    "model": "pet.pet",
+    "pk": 18,
+    "fields": {
+      "name": "Nemo",
+      "category": 5,
+      "breed": "Clownfish",
+      "age": 2,
+      "description": "A lively clownfish, easy to spot in the tank.",
+      "availability": false,
+      "price": "25.00"
+    }
+  },
+  {
+    "model": "pet.pet",
+    "pk": 19,
+    "fields": {
+      "name": "Peanut",
+      "category": 6,
+      "breed": "Syrian Hamster",
+      "age": 1,
+      "description": "Cute little hamster, enjoys running in its wheel.",
+      "availability": true,
+      "price": "20.00"
+    }
+  },
+  {
+    "model": "pet.pet",
+    "pk": 20,
+    "fields": {
+      "name": "Nibbles",
+      "category": 6,
+      "breed": "Roborovski Hamster",
+      "age": 1,
+      "description": "Tiny and fast, loves to dig in bedding.",
+      "availability": true,
+      "price": "25.00"
+    }
+  }
+]

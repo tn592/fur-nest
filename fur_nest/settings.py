@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     "djoser",
     "users",
     "api",
+    "pet",
 ]
 
 MIDDLEWARE = [
