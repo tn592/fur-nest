@@ -9,6 +9,7 @@ from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.filters import SearchFilter, OrderingFilter
 from pet.filters import PetFilter
 from drf_yasg.utils import swagger_auto_schema
+from drf_yasg import openapi
 
 # from api.permissions import FullDjangoModelPermission
 
@@ -18,7 +19,6 @@ class PetViewSet(ModelViewSet):
     API endpoint for managing pets in the pet-adoption platform
     - Allows authenticated admin to add, update, and delete pets
     - Allows users to adopt and filter pets
-    - Support searching by category
     """
 
     serializer_class = PetSerializer
@@ -37,6 +37,7 @@ class PetViewSet(ModelViewSet):
     def list(self, request, *args, **kwargs):
         """
         Retrive all the pets
+        - Support searching by category
         """
         return super().list(request, *args, **kwargs)
 
