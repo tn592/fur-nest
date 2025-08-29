@@ -42,8 +42,16 @@ class CreateAdoptionSerializer(serializers.ModelSerializer):
         if not adopt:
             adopt = Adopt.objects.create(user=user)
 
+        if pet.price > user.account_balance:
+            raise serializers.ValidationError(
+                "You do not have sufficient balance to adopt this pet"
+            )
+
         if AdoptionHistory.objects.filter(adopt=adopt, pet=pet).exists():
             raise serializers.ValidationError("already adopted this pet")
+
+        user.account_balance -= pet.price
+        user.save(update_fields=["account_balance"])
 
         adoption_history = AdoptionHistory.objects.create(
             adopt=adopt, pet=pet, price=pet.price
