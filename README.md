@@ -3,8 +3,8 @@
 fur-nest is a RESTful Pet Adoption Platform API built using Django REST Framework (DRF). It provides endpoints for managing pets, categories, adoptions, and adoption-histories. The project also implements JWT authentication using Djoser and includes API documentation with Swagger.
 
 ## Features
-- Product and category management
-- Cart and order functionality
+- Pet and category management
+- Adoption functionality
 - JWT authentication using Djoser
 - API documentation using Swagger (drf_yasg)
 
