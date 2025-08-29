@@ -10,6 +10,7 @@ class User(AbstractUser):
     email = models.EmailField(unique=True)
     address = models.TextField(blank=True, null=True)
     phone_number = models.TextField(max_length=15, blank=True, null=True)
+    account_balance = models.DecimalField(max_digits=12, decimal_places=2, default=0.00)
 
     USERNAME_FIELD = "email"  # Use email instead of username
     REQUIRED_FIELDS = []
