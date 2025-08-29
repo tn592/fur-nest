@@ -1,5 +1,5 @@
-from pet.models import Pet, Category
-from pet.serializers import PetSerializer, CategorySerializer
+from pet.models import Pet, Category, Review
+from pet.serializers import PetSerializer, CategorySerializer, ReviewSerializer
 from django.db.models import Count
 from rest_framework.viewsets import ModelViewSet
 from pet.paginations import DefaultPagination
@@ -10,6 +10,7 @@ from rest_framework.filters import SearchFilter, OrderingFilter
 from pet.filters import PetFilter
 from drf_yasg.utils import swagger_auto_schema
 from drf_yasg import openapi
+from pet.permissions import IsReviewAuthorOrReadonly
 
 # from api.permissions import FullDjangoModelPermission
 
@@ -56,3 +57,22 @@ class CategoryViewSet(ModelViewSet):
     permission_classes = [IsAdminOrReadOnly]
     queryset = Category.objects.annotate(pet_count=Count("pets")).all()
     serializer_class = CategorySerializer
+
+
+class ReviewViewSet(ModelViewSet):
+    serializer_class = ReviewSerializer
+    permission_classes = [IsReviewAuthorOrReadonly]
+
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
+
+    def perform_update(self, serializer):
+        serializer.save(user=self.request.user)
+
+    def get_queryset(self):
+        return Review.objects.filter(pet_id=self.kwargs.get("pet_pk"))
+
+    def get_serializer_context(self):
+        context = super().get_serializer_context()
+        context["pet_id"] = self.kwargs.get("pet_pk")
+        return context

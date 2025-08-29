@@ -1,6 +1,6 @@
 from decimal import Decimal
 from rest_framework import serializers
-from pet.models import Category, Pet
+from pet.models import Category, Pet, Review
 from django.contrib.auth import get_user_model
 
 
@@ -43,3 +43,33 @@ class SimpleUserSerializer(serializers.ModelSerializer):
 
     def get_current_user_name(self, obj):
         return obj.get_full_name()
+
+
+class ReviewSerializer(serializers.ModelSerializer):
+    user = serializers.SerializerMethodField(method_name="get_user")
+
+    class Meta:
+        model = Review
+        fields = ["id", "user", "pet", "ratings", "comment"]
+        read_only_fields = ["user", "pet"]
+
+    def get_user(self, obj):
+        return SimpleUserSerializer(obj.user).data
+
+    def validate(self, data):
+        request = self.context["request"]
+        pet_id = self.context.get("pet_id")
+        user = request.user
+
+        from adoption.models import AdoptionHistory
+
+        if not AdoptionHistory.objects.filter(adopt__user=user, pet_id=pet_id).exists():
+            raise serializers.ValidationError(
+                "You can only review pets you have adopted."
+            )
+
+        return data
+
+    def create(self, validated_data):
+        pet_id = self.context["pet_id"]
+        return Review.objects.create(pet_id=pet_id, **validated_data)
