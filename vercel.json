@@ -1,13 +1,13 @@
 {
     "builds": [{
-      "src": "fur-nest/wsgi.py",
+      "src": "fur_nest/wsgi.py",
       "use": "@vercel/python",
       "config": { "maxLambdaSize": "15mb", "runtime": "python3.11.3" }
     }],
     "routes": [
       {
         "src": "/(.*)",
-        "dest": "fur-nest/wsgi.py"
+        "dest": "fur_nest/wsgi.py"
       }
     ]
 }
