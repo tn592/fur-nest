@@ -3,10 +3,13 @@ from rest_framework import routers
 from pet.views import PetViewSet, CategoryViewSet
 from adoption.views import AdoptionHistoryViewSet
 
+from users.views import AccountBalanceViewset
+
 router = routers.DefaultRouter()
 router.register("pets", PetViewSet, basename="pets")
 router.register("categories", CategoryViewSet)
 router.register("adoptions", AdoptionHistoryViewSet, basename="adoptions")
+router.register("balance", AccountBalanceViewset, basename="balance")
 
 urlpatterns = [
     path("", include(router.urls)),
