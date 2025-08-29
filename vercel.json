@@ -7,7 +7,7 @@
     "routes": [
       {
         "src": "/(.*)",
-        "dest": "phi_mart/wsgi.py"
+        "dest": "fur-nest/wsgi.py"
       }
     ]
 }
