@@ -23,6 +23,14 @@ class AdoptionHistoryViewSet(viewsets.ModelViewSet):
         return AdoptionHistorySerializer
 
     @swagger_auto_schema(
+        operation_summary="View all adoption histories",
+        operation_description="This allows a customer to view their adoption histories",
+        responses={200: AdoptionHistorySerializer(many=True)},
+    )
+    def list(self, request, *args, **kwargs):
+        return super().list(request, *args, **kwargs)
+
+    @swagger_auto_schema(
         operation_summary="Adopt a pet",
         operation_description="This allows a customer to adopt a pet if they have sufficient balance",
         request_body=CreateAdoptionSerializer,

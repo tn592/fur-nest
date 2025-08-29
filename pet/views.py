@@ -12,8 +12,6 @@ from drf_yasg.utils import swagger_auto_schema
 from drf_yasg import openapi
 from pet.permissions import IsReviewAuthorOrReadonly
 
-# from api.permissions import FullDjangoModelPermission
-
 
 class PetViewSet(ModelViewSet):
     """

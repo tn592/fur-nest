@@ -21,4 +21,4 @@ class AdoptionHistory(models.Model):
     price = models.DecimalField(max_digits=10, decimal_places=2)
 
     def __str__(self):
-        return f"{self.pet.name} adopted by {self.adopt.user.name}"
+        return f"{self.pet.name} adopted by {self.adopt.user.first_name}"

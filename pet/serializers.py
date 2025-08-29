@@ -1,4 +1,3 @@
-from decimal import Decimal
 from rest_framework import serializers
 from pet.models import Category, Pet, Review
 from django.contrib.auth import get_user_model
