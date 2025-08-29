@@ -38,7 +38,6 @@ class UserSerializer(BaseUserSerializer):
         ]
 
     def get_adoption_history(self, obj):
-        # Fetch all adoption histories for this user
         histories = AdoptionHistory.objects.filter(adopt__user=obj).select_related(
             "pet"
         )
