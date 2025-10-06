@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "drf_yasg",
     "django_filters",
+    "corsheaders",
     "rest_framework",
     "djoser",
     "users",
@@ -51,6 +52,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    "corsheaders.middleware.CorsMiddleware",
     "debug_toolbar.middleware.DebugToolbarMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
@@ -86,6 +88,8 @@ INTERNAL_IPS = [
 ]
 
 WSGI_APPLICATION = "fur_nest.wsgi.app"
+
+CORS_ALLOWED_ORIGINS = ["http://localhost:5173"]
 
 
 # Database
