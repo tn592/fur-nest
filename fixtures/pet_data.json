@@ -306,5 +306,268 @@
       "availability": true,
       "price": "25.00"
     }
+  },
+  {
+    "model": "pet.pet",
+    "pk": 21,
+    "fields": {
+      "name": "Charlie",
+      "category": 1,
+      "breed": "Labrador Retriever",
+      "age": 2,
+      "description": "Friendly and outgoing dog that loves to play fetch.",
+      "availability": true,
+      "price": "600.00"
+    }
+  },
+  {
+    "model": "pet.pet",
+    "pk": 22,
+    "fields": {
+      "name": "Rex",
+      "category": 1,
+      "breed": "Doberman Pinscher",
+      "age": 3,
+      "description": "Alert and loyal companion, great for protection.",
+      "availability": false,
+      "price": "750.00"
+    }
+  },
+  {
+    "model": "pet.pet",
+    "pk": 23,
+    "fields": {
+      "name": "Daisy",
+      "category": 1,
+      "breed": "Pomeranian",
+      "age": 1,
+      "description": "Fluffy and cheerful small dog that loves attention.",
+      "availability": true,
+      "price": "450.00"
+    }
+  },
+  {
+    "model": "pet.pet",
+    "pk": 24,
+    "fields": {
+      "name": "Cooper",
+      "category": 1,
+      "breed": "Husky",
+      "age": 2,
+      "description": "Energetic and adventurous dog with striking blue eyes.",
+      "availability": true,
+      "price": "650.00"
+    }
+  },
+  {
+    "model": "pet.pet",
+    "pk": 25,
+    "fields": {
+      "name": "Whiskers",
+      "category": 2,
+      "breed": "Ragdoll",
+      "age": 2,
+      "description": "Affectionate cat that loves cuddles and calm environments.",
+      "availability": true,
+      "price": "0.00"
+    }
+  },
+  {
+    "model": "pet.pet",
+    "pk": 26,
+    "fields": {
+      "name": "Mochi",
+      "category": 2,
+      "breed": "Scottish Fold",
+      "age": 1,
+      "description": "Cute cat with folded ears, loves quiet spaces.",
+      "availability": false,
+      "price": "0.00"
+    }
+  },
+  {
+    "model": "pet.pet",
+    "pk": 27,
+    "fields": {
+      "name": "Oreo",
+      "category": 2,
+      "breed": "British Shorthair",
+      "age": 3,
+      "description": "Calm and intelligent cat with a round face and plush fur.",
+      "availability": true,
+      "price": "0.00"
+    }
+  },
+  {
+    "model": "pet.pet",
+    "pk": 28,
+    "fields": {
+      "name": "Leo",
+      "category": 2,
+      "breed": "Abyssinian",
+      "age": 2,
+      "description": "Active and curious cat, loves climbing and exploring.",
+      "availability": true,
+      "price": "0.00"
+    }
+  },
+  {
+    "model": "pet.pet",
+    "pk": 29,
+    "fields": {
+      "name": "Kiwi",
+      "category": 3,
+      "breed": "Lovebird",
+      "age": 1,
+      "description": "Bright and affectionate bird that enjoys company.",
+      "availability": true,
+      "price": "90.00"
+    }
+  },
+  {
+    "model": "pet.pet",
+    "pk": 30,
+    "fields": {
+      "name": "Skye",
+      "category": 3,
+      "breed": "Budgerigar",
+      "age": 2,
+      "description": "Charming parakeet with blue feathers and a playful attitude.",
+      "availability": true,
+      "price": "55.00"
+    }
+  },
+  {
+    "model": "pet.pet",
+    "pk": 31,
+    "fields": {
+      "name": "Rio",
+      "category": 3,
+      "breed": "African Grey Parrot",
+      "age": 5,
+      "description": "Highly intelligent bird that can mimic human speech.",
+      "availability": false,
+      "price": "900.00"
+    }
+  },
+  {
+    "model": "pet.pet",
+    "pk": 32,
+    "fields": {
+      "name": "Pip",
+      "category": 3,
+      "breed": "Finch",
+      "age": 1,
+      "description": "Tiny and lively bird with a soft singing voice.",
+      "availability": true,
+      "price": "40.00"
+    }
+  },
+  {
+    "model": "pet.pet",
+    "pk": 33,
+    "fields": {
+      "name": "Clover",
+      "category": 4,
+      "breed": "Lionhead Rabbit",
+      "age": 2,
+      "description": "Fluffy rabbit with a mane-like fur around its head.",
+      "availability": true,
+      "price": "85.00"
+    }
+  },
+  {
+    "model": "pet.pet",
+    "pk": 34,
+    "fields": {
+      "name": "Marshmallow",
+      "category": 4,
+      "breed": "Angora Rabbit",
+      "age": 3,
+      "description": "Soft, long-haired rabbit that loves gentle grooming.",
+      "availability": false,
+      "price": "95.00"
+    }
+  },
+  {
+    "model": "pet.pet",
+    "pk": 35,
+    "fields": {
+      "name": "Bunny",
+      "category": 4,
+      "breed": "Dutch Rabbit",
+      "age": 1,
+      "description": "Friendly and small rabbit with distinct color markings.",
+      "availability": true,
+      "price": "70.00"
+    }
+  },
+  {
+    "model": "pet.pet",
+    "pk": 36,
+    "fields": {
+      "name": "Coral",
+      "category": 5,
+      "breed": "Guppy",
+      "age": 1,
+      "description": "Tiny, colorful fish that thrives in community tanks.",
+      "availability": true,
+      "price": "8.00"
+    }
+  },
+  {
+    "model": "pet.pet",
+    "pk": 37,
+    "fields": {
+      "name": "Wave",
+      "category": 5,
+      "breed": "Angelfish",
+      "age": 2,
+      "description": "Graceful fish with long fins and calm temperament.",
+      "availability": false,
+      "price": "18.00"
+    }
+  },
+  {
+    "model": "pet.pet",
+    "pk": 38,
+    "fields": {
+      "name": "Shimmer",
+      "category": 5,
+      "breed": "Tetra",
+      "age": 1,
+      "description": "Small schooling fish with iridescent colors.",
+      "availability": true,
+      "price": "12.00"
+    }
+  },
+  {
+    "model": "pet.pet",
+    "pk": 39,
+    "fields": {
+      "name": "Hazel",
+      "category": 6,
+      "breed": "Winter White Hamster",
+      "age": 1,
+      "description": "Adorable hamster with a chubby body and calm nature.",
+      "availability": true,
+      "price": "22.00"
+    }
+  },
+  {
+    "model": "pet.pet",
+    "pk": 40,
+    "fields": {
+      "name": "Pudding",
+      "category": 6,
+      "breed": "Chinese Hamster",
+      "age": 2,
+      "description": "Slim, curious hamster that loves to burrow.",
+      "availability": false,
+      "price": "28.00"
+    }
   }
 ]
+
+
+
