@@ -13,7 +13,16 @@ class CategorySerializer(serializers.ModelSerializer):
     )
 
 
+class PetImageSerializer(serializers.ModelSerializer):
+    image = serializers.ImageField()
+
+    class Meta:
+        model = PetImage
+        fields = ["id", "image"]
+        
+        
 class PetSerializer(serializers.ModelSerializer):
+    images = PetImageSerializer(many=True, read_only=True)
     class Meta:
         model = Pet
         fields = [
@@ -25,20 +34,13 @@ class PetSerializer(serializers.ModelSerializer):
             "description",
             "availability",
             "price",
+            "images",
         ]  # other
 
     def validate_price(self, price):
         if price < 0:
             raise serializers.ValidationError("Price could not be negative")
         return price
-
-
-class PetImageSerializer(serializers.ModelSerializer):
-    image = serializers.ImageField()
-
-    class Meta:
-        model = PetImage
-        fields = ["id", "image"]
 
 
 class SimpleUserSerializer(serializers.ModelSerializer):
