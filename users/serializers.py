@@ -38,9 +38,10 @@ class UserSerializer(BaseUserSerializer):
             "phone_number",
             "account_balance",
             "adoption_history",
+            "is_staff",
         ]
 
-    read_only_fields = ["id", "email", "adoption_history"]
+    read_only_fields = ["id", "email", "adoption_history", "is_staff"]
 
     def get_adoption_history(self, obj):
         histories = AdoptionHistory.objects.filter(adopt__user=obj).select_related(
