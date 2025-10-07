@@ -35,9 +35,31 @@ class PetViewSet(ModelViewSet):
     permission_classes = [DjangoModelPermissionsOrAnonReadOnly]
 
     def get_queryset(self):
-        return Pet.objects.all()
+        return Pet.objects.prefetch_related("images").all()
 
-    @swagger_auto_schema(operation_summary="Retrive a list of pets")
+    @swagger_auto_schema(
+        operation_summary="Retrieve a list of pets",
+        manual_parameters=[
+            openapi.Parameter(
+                "category_id",
+                openapi.IN_QUERY,
+                description="Filter by category id",
+                type=openapi.TYPE_STRING,
+            ),
+            openapi.Parameter(
+                "price__gt",
+                openapi.IN_QUERY,
+                description="Minimum price",
+                type=openapi.TYPE_STRING,
+            ),
+            openapi.Parameter(
+                "price__lt",
+                openapi.IN_QUERY,
+                description="Maximum price",
+                type=openapi.TYPE_STRING,
+            ),
+        ],
+    )
     def list(self, request, *args, **kwargs):
         """
         Retrive all the pets
