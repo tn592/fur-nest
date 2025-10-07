@@ -4,6 +4,7 @@ from django.core.validators import (
     MinValueValidator,
     MaxValueValidator,
 )
+from cloudinary.models import CloudinaryField
 
 # Create your models here.
 
@@ -39,6 +40,11 @@ class Pet(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class PetImage(models.Model):
+    pet = models.ForeignKey(Pet, on_delete=models.CASCADE, related_name="images")
+    image = CloudinaryField("image")
 
 
 class Review(models.Model):

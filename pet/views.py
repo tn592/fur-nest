@@ -1,5 +1,10 @@
-from pet.models import Pet, Category, Review
-from pet.serializers import PetSerializer, CategorySerializer, ReviewSerializer
+from pet.models import Pet, Category, PetImage, Review
+from pet.serializers import (
+    PetImageSerializer,
+    PetSerializer,
+    CategorySerializer,
+    ReviewSerializer,
+)
 from django.db.models import Count
 from rest_framework.viewsets import ModelViewSet
 from pet.paginations import DefaultPagination
@@ -49,6 +54,17 @@ class PetViewSet(ModelViewSet):
     def create(self, request, *args, **kwargs):
         """Only authenticated admin can add pet"""
         return super().create(request, *args, **kwargs)
+
+
+class PetImageViewSet(ModelViewSet):
+    serializer_class = PetImageSerializer
+    permission_classes = [IsAdminOrReadOnly]
+
+    def get_queryset(self):
+        return PetImage.objects.filter(pet_id=self.kwargs.get("pet_pk"))
+
+    def perform_create(self, serializer):
+        serializer.save(pet_id=self.kwargs.get("pet_pk"))
 
 
 class CategoryViewSet(ModelViewSet):

@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from pet.models import Category, Pet, Review
+from pet.models import Category, Pet, PetImage, Review
 from django.contrib.auth import get_user_model
 
 
@@ -31,6 +31,14 @@ class PetSerializer(serializers.ModelSerializer):
         if price < 0:
             raise serializers.ValidationError("Price could not be negative")
         return price
+
+
+class PetImageSerializer(serializers.ModelSerializer):
+    image = serializers.ImageField()
+
+    class Meta:
+        model = PetImage
+        fields = ["id", "image"]
 
 
 class SimpleUserSerializer(serializers.ModelSerializer):
