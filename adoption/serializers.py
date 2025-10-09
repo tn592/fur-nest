@@ -57,4 +57,7 @@ class CreateAdoptionSerializer(serializers.ModelSerializer):
             adopt=adopt, pet=pet, price=pet.price
         )
 
+        pet.availability = False
+        pet.save(update_fields=["availability"])
+
         return adoption_history
