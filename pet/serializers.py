@@ -19,10 +19,11 @@ class PetImageSerializer(serializers.ModelSerializer):
     class Meta:
         model = PetImage
         fields = ["id", "image"]
-        
-        
+
+
 class PetSerializer(serializers.ModelSerializer):
     images = PetImageSerializer(many=True, read_only=True)
+
     class Meta:
         model = Pet
         fields = [

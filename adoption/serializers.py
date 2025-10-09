@@ -1,12 +1,15 @@
 from rest_framework import serializers
 from adoption.models import Adopt, AdoptionHistory
 from pet.models import Pet
+from pet.serializers import PetImageSerializer
 
 
 class SimplePetSerializer(serializers.ModelSerializer):
+    images = PetImageSerializer(many=True, read_only=True)
+
     class Meta:
         model = Pet
-        fields = ["id", "name", "category", "price"]
+        fields = ["id", "name", "category", "price", "images"]
 
 
 class AdoptionHistorySerializer(serializers.ModelSerializer):
