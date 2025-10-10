@@ -1,9 +1,11 @@
 from rest_framework import viewsets, permissions
+from rest_framework.views import APIView
 from adoption.models import AdoptionHistory
 from adoption.serializers import AdoptionHistorySerializer, CreateAdoptionSerializer
 from drf_yasg.utils import swagger_auto_schema
 from rest_framework import status
 from rest_framework.response import Response
+from rest_framework.permissions import IsAuthenticated
 
 
 class AdoptionHistoryViewSet(viewsets.ModelViewSet):
@@ -44,3 +46,18 @@ class AdoptionHistoryViewSet(viewsets.ModelViewSet):
 
         response_serializer = AdoptionHistorySerializer(adoption_history)
         return Response(response_serializer.data, status=status.HTTP_201_CREATED)
+
+
+class HasAdoptedPet(APIView):
+    """
+    Check if the authenticated user has adopted a specific pet.
+    """
+
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request, pet_id):
+        user = request.user
+        has_adopted = AdoptionHistory.objects.filter(
+            adopt__user=user, pet_id=pet_id
+        ).exists()
+        return Response({"hasAdopted": has_adopted}, status=status.HTTP_200_OK)

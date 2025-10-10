@@ -1,7 +1,7 @@
 from django.urls import path, include
 from rest_framework import routers
 from pet.views import PetImageViewSet, PetViewSet, CategoryViewSet, ReviewViewSet
-from adoption.views import AdoptionHistoryViewSet
+from adoption.views import AdoptionHistoryViewSet, HasAdoptedPet
 from rest_framework_nested import routers
 from users.views import AccountBalanceViewset
 
@@ -18,4 +18,5 @@ urlpatterns = [
     path("", include(pet_router.urls)),
     path("auth/", include("djoser.urls")),
     path("auth/", include("djoser.urls.jwt")),
+    path("has-adopted/<int:pet_id>/", HasAdoptedPet.as_view(), name="has-adopted"),
 ]
