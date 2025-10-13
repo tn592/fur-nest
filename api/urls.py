@@ -3,6 +3,7 @@ from rest_framework import routers
 from pet.views import PetImageViewSet, PetViewSet, CategoryViewSet, ReviewViewSet
 from adoption.views import (
     AdoptionHistoryViewSet,
+    PaymentHistory,
     initiate_payment,
     HasAdoptedPet,
     payment_success,
@@ -25,5 +26,6 @@ urlpatterns = [
     path("auth/", include("djoser.urls.jwt")),
     path("payment/initiate/", initiate_payment, name="initiate-payment"),
     path("payment/success/", payment_success, name="payment-success"),
+    path("payment/history/", PaymentHistory.as_view(), name="payment-history"),
     path("has-adopted/<int:pet_id>/", HasAdoptedPet.as_view(), name="has-adopted"),
 ]

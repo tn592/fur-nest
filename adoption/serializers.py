@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from adoption.models import Adopt, AdoptionHistory
+from adoption.models import Adopt, AdoptionHistory, Payment
 from pet.models import Pet
 from pet.serializers import PetImageSerializer
 
@@ -64,3 +64,11 @@ class CreateAdoptionSerializer(serializers.ModelSerializer):
         pet.save(update_fields=["availability"])
 
         return adoption_history
+
+
+class PaymentSerializer(serializers.ModelSerializer):
+    pet = SimplePetSerializer(read_only=True)
+
+    class Meta:
+        model = Payment
+        fields = ["id", "pet", "amount", "transaction_id", "status", "created_at"]

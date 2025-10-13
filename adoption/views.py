@@ -1,7 +1,11 @@
 from rest_framework import viewsets, permissions
 from rest_framework.views import APIView
-from adoption.models import AdoptionHistory
-from adoption.serializers import AdoptionHistorySerializer, CreateAdoptionSerializer
+from adoption.models import AdoptionHistory, Payment
+from adoption.serializers import (
+    AdoptionHistorySerializer,
+    CreateAdoptionSerializer,
+    PaymentSerializer,
+)
 from drf_yasg.utils import swagger_auto_schema
 from rest_framework import status
 from rest_framework.response import Response
@@ -95,10 +99,29 @@ def initiate_payment(request):
 
 @api_view(["POST"])
 def payment_success(request):
-    adoption_id = request.data.get("tran_id").split("_")[1]
+    tran_id = request.data.get("tran_id")
+    adoption_id = tran_id.split("_")[1]
+
     adoption = AdoptionHistory.objects.get(id=adoption_id)
-    adoption.save()
+    user = adoption.adopt.user
+
+    Payment.objects.create(
+        user=user,
+        adoption=adoption,
+        amount=adoption.pet.adoption_cost,
+        transaction_id=tran_id,
+        status="Completed",
+    )
+
     return redirect(f"{main_settings.FRONTEND_URL}/dashboard/payment/success/")
+
+
+class PaymentHistory(viewsets.generics.ListAPIView):
+    serializer_class = PaymentSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get_queryset(self):
+        return Payment.objects.filter(user=self.request.user).order_by("-created_at")
 
 
 class HasAdoptedPet(APIView):
