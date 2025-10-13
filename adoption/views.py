@@ -6,6 +6,10 @@ from drf_yasg.utils import swagger_auto_schema
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
+from rest_framework.decorators import api_view
+from sslcommerz_lib import SSLCOMMERZ
+from django.conf import settings as main_settings
+from django.shortcuts import HttpResponseRedirect, redirect
 
 
 class AdoptionHistoryViewSet(viewsets.ModelViewSet):
@@ -46,6 +50,57 @@ class AdoptionHistoryViewSet(viewsets.ModelViewSet):
 
         response_serializer = AdoptionHistorySerializer(adoption_history)
         return Response(response_serializer.data, status=status.HTTP_201_CREATED)
+
+
+@api_view(["POST"])
+def initiate_payment(request):
+    user = request.user
+    amount = request.data.get("amount")
+    adoption_id = request.data.get("adoptionId")
+    settings = {
+        "store_id": "furne68ea8e6be6f18",
+        "store_pass": "furne68ea8e6be6f18@ssl",
+        "issandbox": True,
+    }
+    sslcz = SSLCOMMERZ(settings)
+    post_body = {}
+    post_body["total_amount"] = amount
+    post_body["currency"] = "BDT"
+    post_body["tran_id"] = f"txn_{adoption_id}"
+    post_body["success_url"] = f"{main_settings.BACKEND_URL}/api/v1/payment/success/"
+    post_body["fail_url"] = "http://localhost:5173/dashboard/adoption-history"
+    post_body["cancel_url"] = "http://localhost:5173/dashboard/adoption-history"
+    post_body["emi_option"] = 0
+    post_body["cus_name"] = f"{user.first_name} {user.last_name}"
+    post_body["cus_email"] = user.email
+    post_body["cus_phone"] = user.phone_number
+    post_body["cus_add1"] = user.address
+    post_body["cus_city"] = "Dhaka"
+    post_body["cus_country"] = "Bangladesh"
+    post_body["shipping_method"] = "NO"
+    post_body["multi_card_name"] = ""
+    post_body["num_of_item"] = 1
+    post_body["product_name"] = "Furnest Pet"
+    post_body["product_category"] = "Test Category"
+    post_body["product_profile"] = "general"
+
+    response = sslcz.createSession(post_body)  # API response
+
+    if response.get("status") == "SUCCESS":
+        return Response({"payment_url": response["GatewayPageURL"]})
+    return Response(
+        {"error": "Payment initiation failed"}, status=status.HTTP_400_BAD_REQUEST
+    )
+
+
+@api_view(["POST"])
+def payment_success(request):
+    adoption_id = request.data.get("tran_id").split("_")[1]
+    adoption = AdoptionHistory.objects.get(id=adoption_id)
+    adoption.save()
+    return HttpResponseRedirect(
+        f"{main_settings.FRONTEND_URL}/dashboard/adoption-history"
+    )
 
 
 class HasAdoptedPet(APIView):
