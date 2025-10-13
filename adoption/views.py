@@ -112,7 +112,7 @@ def payment_success(request):
         Payment.objects.create(
             user=user,
             adoption=adoption,
-            amount=adoption.pet.adoption_cost,
+            amount=adoption.pet.price,
             transaction_id=tran_id,
             status="Completed",
         )
