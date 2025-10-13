@@ -98,9 +98,7 @@ def payment_success(request):
     adoption_id = request.data.get("tran_id").split("_")[1]
     adoption = AdoptionHistory.objects.get(id=adoption_id)
     adoption.save()
-    return HttpResponseRedirect(
-        f"{main_settings.FRONTEND_URL}/dashboard/adoption-history"
-    )
+    return redirect(f"{main_settings.FRONTEND_URL}/dashboard/payment/success/")
 
 
 class HasAdoptedPet(APIView):
