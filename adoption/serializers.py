@@ -67,8 +67,8 @@ class CreateAdoptionSerializer(serializers.ModelSerializer):
 
 
 class PaymentSerializer(serializers.ModelSerializer):
-    pet = SimplePetSerializer(read_only=True)
+    pet_name = serializers.CharField(source="adoption.pet.name", read_only=True)
 
     class Meta:
         model = Payment
-        fields = ["id", "pet", "amount", "transaction_id", "status", "created_at"]
+        fields = ["id", "pet_name", "amount", "transaction_id", "status", "created_at"]
