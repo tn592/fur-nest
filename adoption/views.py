@@ -97,23 +97,31 @@ def initiate_payment(request):
     )
 
 
-@api_view(["POST"])
+@api_view(["POST", "GET"])
 def payment_success(request):
-    tran_id = request.data.get("tran_id")
-    adoption_id = tran_id.split("_")[1]
+    tran_id = request.data.get("tran_id") or request.GET.get("tran_id")
 
-    adoption = AdoptionHistory.objects.get(id=adoption_id)
-    user = adoption.adopt.user
+    if not tran_id:
+        return Response({"error": "Transaction ID not found"}, status=400)
 
-    Payment.objects.create(
-        user=user,
-        adoption=adoption,
-        amount=adoption.pet.adoption_cost,
-        transaction_id=tran_id,
-        status="Completed",
-    )
+    try:
+        adoption_id = tran_id.split("_")[1]
+        adoption = AdoptionHistory.objects.get(id=adoption_id)
+        user = adoption.adopt.user
 
-    return redirect(f"{main_settings.FRONTEND_URL}/dashboard/payment/success/")
+        Payment.objects.create(
+            user=user,
+            adoption=adoption,
+            amount=adoption.pet.adoption_cost,
+            transaction_id=tran_id,
+            status="Completed",
+        )
+
+        return redirect(f"{main_settings.FRONTEND_URL}/dashboard/payment/success/")
+    except AdoptionHistory.DoesNotExist:
+        return Response({"error": "Adoption not found"}, status=404)
+    except Exception as e:
+        return Response({"error": str(e)}, status=500)
 
 
 class PaymentHistory(viewsets.generics.ListAPIView):
