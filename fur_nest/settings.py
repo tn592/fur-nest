@@ -91,7 +91,7 @@ INTERNAL_IPS = [
 
 WSGI_APPLICATION = "fur_nest.wsgi.app"
 
-CORS_ALLOWED_ORIGINS = ["http://localhost:5173"]
+CORS_ALLOWED_ORIGINS = ["http://localhost:5173", "https://fn-ui.vercel.app"]
 
 
 # Database
