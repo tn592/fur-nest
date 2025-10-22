@@ -20,7 +20,6 @@ class UserCreateSerializer(BaseUserCreateSerializer):
             "last_name",
             "address",
             "phone_number",
-            "account_balance",
         ]
 
 
