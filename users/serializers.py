@@ -12,6 +12,7 @@ from django.contrib.auth import get_user_model
 
 class UserCreateSerializer(BaseUserCreateSerializer):
     class Meta(BaseUserCreateSerializer.Meta):
+        model = get_user_model()
         fields = [
             "id",
             "email",
