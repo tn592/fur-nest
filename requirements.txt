@@ -16,13 +16,17 @@ djangorestframework_simplejwt==5.5.1
 djoser==2.3.3
 drf-nested-routers==0.94.2
 drf-yasg==1.21.10
+flake8==7.3.0
 idna==3.10
 inflection==0.5.1
+mccabe==0.7.0
 oauthlib==3.3.1
 packaging==25.0
 pillow==11.3.0
 psycopg2-binary==2.9.10
+pycodestyle==2.14.0
 pycparser==2.22
+pyflakes==3.4.0
 PyJWT==2.10.1
 python-decouple==3.8
 python3-openid==3.2.0
