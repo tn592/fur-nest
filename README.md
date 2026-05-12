@@ -48,17 +48,17 @@ fur-nest is a RESTful Pet Adoption Platform API built using Django REST Framewor
 6. **Run the development server:**
    ```bash
    python manage.py runserver
-   ```    |
+   ```    
 
 ## API Documentation
 Swagger documentation is available at:
 ```
-http://127.0.0.1:8000/swagger/
+[http://127.0.0.1:8000/swagger], [https://fur-nest.vercel.app/swagger]
 ```
 
 ReDoc documentation is available at:
 ```
-http://127.0.0.1:8000/redoc/
+[http://127.0.0.1:8000/redoc], [https://fur-nest.vercel.app/redoc]
 ```
 
 ## Environment Variables
